@@ -10,7 +10,7 @@
              Background="White">
     <Grid Width="1000">
 
-        <Grid.ColumnDefinitions>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -18,9 +18,9 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>-->
 
-        <TextBlock Text="{Binding Id}" />
+        <!--<TextBlock Text="{Binding Id}" />
 
         <TextBlock Grid.Column="1" Text="{Binding Title}" />
 
@@ -32,6 +32,16 @@
 
         <TextBlock Grid.Column="5" Text="{Binding Format}" />
 
-        <TextBlock Grid.Column="6" Text="{Binding Genre}" />
+        <TextBlock Grid.Column="6" Text="{Binding Genre}" />-->
+
+        
+
+        <StackPanel Orientation="Horizontal">
+            <local:TextEntryControl DataContext="{Binding Title}" />
+            <local:TextEntryControl DataContext="{Binding Director}" />
+            <local:DateEntryControl DataContext="{Binding ReleaseDate}" />
+            <local:TextEntryControl DataContext="{Binding Format}" />
+            <local:TextEntryControl DataContext="{Binding Genre}" />
+        </StackPanel>
     </Grid>
 </UserControl>

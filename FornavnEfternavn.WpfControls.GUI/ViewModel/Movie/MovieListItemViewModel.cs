@@ -9,16 +9,16 @@ namespace FornavnEfternavn.WpfControls.GUI
     {
         public int Id { get; set; }
 
-        public string Title { get; set; }
+        public TextEntryViewModel Title { get; set; }
 
-        public DateTime ReleaseDate { get; set; }
+        public DateEntryViewModel ReleaseDate { get; set; }
 
-        public string Director { get; set; }
+        public TextEntryViewModel Director { get; set; }
 
         public bool IsColor { get; set; }
 
-        public string Format { get; set; }
+        public TextEntryViewModel Format { get; set; }
 
-        public string Genre { get; set; }
+        public TextEntryViewModel Genre { get; set; }
     }
 }

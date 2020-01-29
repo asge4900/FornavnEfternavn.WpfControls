@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace FornavnEfternavn.WpfControls.GUI.ViewModel.Base
+namespace FornavnEfternavn.WpfControls.GUI
 {
     /// <summary>
     /// A basic command that runs an Action

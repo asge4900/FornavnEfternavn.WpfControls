@@ -29,22 +29,22 @@ namespace FornavnEfternavn.WpfControls.GUI
                 new MovieListItemViewModel
                 {
                     Id = 1,
-                    Title = "Star Trek: Beyond",
-                    ReleaseDate = new DateTime(2016, 07, 22),
-                    Director = "Justin Lin",
+                    Title = new TextEntryViewModel { OriginalText = "Star Trek: Beyond" },
+                    ReleaseDate = new DateEntryViewModel { OriginalDate = new DateTime (2016, 07, 22) },
+                    Director =  new TextEntryViewModel { OriginalText ="Justin Lin" },
                     IsColor = true,
-                    Format = "2.35:1",
-                    Genre = "Sci-Fi",
+                    Format = new TextEntryViewModel { OriginalText = "2.35:1" },
+                    Genre = new TextEntryViewModel { OriginalText = "Sci-Fi" },
                 },
                 new MovieListItemViewModel
                 {
                     Id = 2,
-                    Title = "Star Wars: The Last Jedi",
-                    ReleaseDate = new DateTime(2017, 12, 15),
-                    Director = "Ryan Johnson",
+                    Title = new TextEntryViewModel { OriginalText = "Star Wars: The Last Jedi"},
+                    ReleaseDate = new DateEntryViewModel { OriginalDate = new DateTime(2017, 12, 15) },
+                    Director = new TextEntryViewModel { OriginalText = "Ryan Johnson" },
                     IsColor = true,
-                    Format = "2.39:1",
-                    Genre = "Epic Space Opera",
+                    Format = new TextEntryViewModel { OriginalText = "2.39:1" },
+                    Genre = new TextEntryViewModel { OriginalText = "Epic Space Opera" },
                 }
             };
         }

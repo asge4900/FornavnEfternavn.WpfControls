@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FornavnEfternavn.WpfControls.GUI"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib">
+
+    <FontFamily x:Key="FontAwesomeFreeRegular">pack://appliction;,,,/Fonts/#Font Awesome 5 Free Regular</FontFamily>
+
+    <System:String x:Key="FontAwesomeChatIcon">&#xf086;</System:String>
+    <System:String x:Key="FontAwesomeUserIcon">&#xf007;</System:String>
+    <System:String x:Key="FontAwesomePictureChatIcon">&#xf1c5;</System:String>
+    <System:String x:Key="FontAwesomeCogIcon">&#xf013;</System:String>
+    <System:String x:Key="FontAwesomeSearchIcon">&#xf002;</System:String>
+    <System:String x:Key="FontAwesomeEllipsisVerticalIcon">&#xf142;</System:String>
+    <System:String x:Key="FontAwesomeEllipsisHorizontalIcon">&#xf141;</System:String>
+    <System:String x:Key="FontAwesomePaperclipIcon">&#xf0c6;</System:String>
+    <System:String x:Key="FontAwesomeSmileIcon">&#xf118;</System:String>
+    <System:String x:Key="FontAwesomeArrowLeftIcon">&#xf060;</System:String>
+    <System:String x:Key="FontAwesomeTickIcon">&#xf00c;</System:String>
+    <System:String x:Key="FontAwesomeCloseIcon">&#xf00d;</System:String>
+
+</ResourceDictionary>

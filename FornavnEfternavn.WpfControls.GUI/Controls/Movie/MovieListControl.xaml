@@ -7,37 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" Width="1000"
              DataContext="{x:Static local:MovieListDesignModel.Instance}">
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>        
-
-        <TextBlock Text="Id" />
-
-        <TextBlock Grid.Column="1" Text="Title" />
-
-        <TextBlock Grid.Column="2" Text="Udgivelsedato" />
-
-        <TextBlock Grid.Column="3" Text="Instructør" />
-
-        <TextBlock Grid.Column="4" Text="Farve" />
-
-        <TextBlock Grid.Column="5" Text="Format" />
-
-        <TextBlock Grid.Column="6" Text="Genre" />
-
-        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="7"> 
+    <Grid Background="White">   
+        <ScrollViewer> 
             <ItemsControl ItemsSource="{Binding Items}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>

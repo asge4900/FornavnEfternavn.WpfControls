@@ -5,9 +5,11 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                 xmlns:local="clr-namespace:FornavnEfternavn.WpfControls.GUI"
+                xmlns:fa="http://schemas.fontawesome.io/icons/"
                 mc:Ignorable="d" 
-                d:DesignHeight="450" d:DesignWidth="800"
-                Title="Alle film"                
+                d:DesignHeight="450" d:DesignWidth="1000"
+                Title="Alle film"
+                DataContext="{x:Static local:MovieListDesignModel.Instance}"
                 >
 
     <Grid Background="White">
@@ -51,7 +53,7 @@
 
         </Grid>
 
-        <Grid Grid.Row="2" HorizontalAlignment="Center">
+        <Grid Grid.Row="1" HorizontalAlignment="Center">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -77,6 +79,48 @@
                         Height="30"
                         />
         </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Id" />
+
+            <TextBlock Grid.Column="1" Text="Title" />
+
+            <TextBlock Grid.Column="2" Text="Udgivelsedato" />
+
+            <TextBlock Grid.Column="3" Text="Instructør" />
+
+            <TextBlock Grid.Column="4" Text="Farve" />
+
+            <TextBlock Grid.Column="5" Text="Format" />
+
+            <TextBlock Grid.Column="6" Text="Genre" />
+
+            <local:MovieListControl Grid.Row="2" Grid.ColumnSpan="8" />
+        </Grid>
+
+       
+
+
+        <!--<Grid Grid.Row="3" Height="20" Width="20">
+            <Button Background="Transparent" BorderThickness="0">
+                <fa:ImageAwesome Icon="search" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Button>
+        </Grid>-->
 
     </Grid>
 </local:BasePage>
