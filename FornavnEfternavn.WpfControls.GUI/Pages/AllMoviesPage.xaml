@@ -62,22 +62,26 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Margin="0 5 5 0" Text="Søg udgivlesedato fra" />
+            
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0 5 5 0" Text="Søg udgivlesedato fra" />
 
-            <DatePicker Grid.Column="1"
+                    <DatePicker 
                         VerticalAlignment="Top"
                         Height="30"
                         />
 
-            <TextBlock Grid.Column="2" 
+                    <TextBlock 
                        Text="Til" 
                        Margin="5 5"
                        />
 
-            <DatePicker Grid.Column="3" 
+                    <DatePicker 
                         VerticalAlignment="Top"
                         Height="30"
                         />
+                </StackPanel>
+            
         </Grid>
 
         <Grid Grid.Row="2">
@@ -93,24 +97,24 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Id" />
+            
 
-            <TextBlock Grid.Column="1" Text="Title" />
+            <TextBlock Text="Title" />
 
-            <TextBlock Grid.Column="2" Text="Udgivelsedato" />
+            <TextBlock Grid.Column="1" Text="Udgivelsedato" />
 
-            <TextBlock Grid.Column="3" Text="Instructør" />
+            <TextBlock Grid.Column="2" Text="Instructør" />
 
-            <TextBlock Grid.Column="4" Text="Farve" />
+            <TextBlock Grid.Column="3" Text="Farve" />
 
-            <TextBlock Grid.Column="5" Text="Format" />
+            <TextBlock Grid.Column="4" Text="Format" />
 
-            <TextBlock Grid.Column="6" Text="Genre" />
+            <TextBlock Grid.Column="5" Text="Genre" />
 
-            <local:MovieListControl Grid.Row="2" Grid.ColumnSpan="8" />
+            <local:MovieListControl Grid.Row="2" Grid.ColumnSpan="7" />
         </Grid>
 
        

@@ -38,8 +38,9 @@
 
         <StackPanel Orientation="Horizontal">
             <local:TextEntryControl DataContext="{Binding Title}" />
-            <local:TextEntryControl DataContext="{Binding Director}" />
             <local:DateEntryControl DataContext="{Binding ReleaseDate}" />
+            <local:TextEntryControl DataContext="{Binding Director}" />
+            
             <local:TextEntryControl DataContext="{Binding Format}" />
             <local:TextEntryControl DataContext="{Binding Genre}" />
         </StackPanel>
