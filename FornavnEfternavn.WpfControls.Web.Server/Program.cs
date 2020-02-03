@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Dna;
+using Dna.AspNet;
+using Microsoft.AspNetCore;
 
 namespace FornavnEfternavn.WpfControls.Web.Server
 {
@@ -16,11 +13,16 @@ namespace FornavnEfternavn.WpfControls.Web.Server
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+        public static IWebHostBuilder CreateHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                // Add Dna Framework
+                .UseDnaFramework(construct =>
                 {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    // Configure framework
+
+                    // Add file logger
+                    construct.AddFileLogger();
+                })
+                .UseStartup<Startup>();
     }
 }

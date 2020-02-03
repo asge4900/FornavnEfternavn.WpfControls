@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using static Dna.FrameworkDI;
+using Dna;
 
 namespace FornavnEfternavn.WpfControls.Core
 {

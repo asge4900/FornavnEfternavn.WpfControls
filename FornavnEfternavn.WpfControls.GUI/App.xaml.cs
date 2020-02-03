@@ -1,11 +1,7 @@
 ﻿using Dna;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using static Dna.FrameworkDI;
 
 namespace FornavnEfternavn.WpfControls.GUI
 {
@@ -26,8 +22,8 @@ namespace FornavnEfternavn.WpfControls.GUI
             //Setup the main application
             await ApplicationSetupAsync();
 
-            ////Log it
-            //Logger.LogDebugSource("Application starting...");            
+            //Log it
+            Logger.LogDebugSource("Application starting...");
 
             //Show the main window
             Current.MainWindow = new MainWindow();
@@ -40,7 +36,8 @@ namespace FornavnEfternavn.WpfControls.GUI
         private async Task ApplicationSetupAsync()
         {
             // Setup the Dna Framework
-            Framework.Construct<DefaultFrameworkConstruction>()                
+            Framework.Construct<DefaultFrameworkConstruction>()
+                .AddFileLogger()
                 .AddFasettoWordViewModels()                
                 .Build(); 
         }
