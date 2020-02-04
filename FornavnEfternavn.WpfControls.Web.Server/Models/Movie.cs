@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace FornavnEfternavn.WpfControls.Web.Server.Models
+namespace FornavnEfternavn.WpfControls.Web.Server
 {
     public partial class Movie
     {

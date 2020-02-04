@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace FornavnEfternavn.WpfControls.Core.DI.Interfaces
+namespace FornavnEfternavn.WpfControls.Core
 {
     /// <summary>
     /// Holds a bunch of loggers to log messages for the user

@@ -2,9 +2,11 @@ using Dna;
 using Dna.AspNet;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using static Dna.FrameworkDI;
 
 namespace FornavnEfternavn.WpfControls.Web.Server
@@ -22,10 +24,14 @@ namespace FornavnEfternavn.WpfControls.Web.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // Add ApplicationDbContext to DI
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Framework.Construction.Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             // Use Dna Framework
             app.UseDnaFramework();
@@ -45,6 +51,9 @@ namespace FornavnEfternavn.WpfControls.Web.Server
             {
                 endpoints.MapControllers();
             });
+
+            // Make sure we have the database
+            serviceProvider.GetService<ApplicationDbContext>().Database.EnsureCreated();
         }
     }
 }
