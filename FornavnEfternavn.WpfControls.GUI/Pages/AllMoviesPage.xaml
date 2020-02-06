@@ -117,7 +117,11 @@
             <local:MovieListControl Grid.Row="2" Grid.ColumnSpan="7" />
         </Grid>
 
-       
+        <Button Grid.Row="3" 
+                Height="30" 
+                Width="200"
+                Content="Opret film"
+                Command="{Binding CreateMovieCommand}" />
 
 
         <!--<Grid Grid.Row="3" Height="20" Width="20">

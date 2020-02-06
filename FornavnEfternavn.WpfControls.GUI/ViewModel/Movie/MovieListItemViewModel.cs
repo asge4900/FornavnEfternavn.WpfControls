@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace FornavnEfternavn.WpfControls.GUI
 {
@@ -6,7 +8,7 @@ namespace FornavnEfternavn.WpfControls.GUI
     /// 
     /// </summary>
     public class MovieListItemViewModel : BaseViewModel
-    {
+    { 
         public int Id { get; set; }
 
         public TextEntryViewModel Title { get; set; }
@@ -19,6 +21,6 @@ namespace FornavnEfternavn.WpfControls.GUI
 
         public TextEntryViewModel Format { get; set; }
 
-        public TextEntryViewModel Genre { get; set; }
+        public TextEntryViewModel Genre { get; set; }             
     }
 }

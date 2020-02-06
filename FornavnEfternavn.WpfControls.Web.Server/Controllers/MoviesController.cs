@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FornavnEfternavn.WpfControls.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -74,12 +75,22 @@ namespace FornavnEfternavn.WpfControls.Web.Server.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Movie>> PostMovieAsync(Movie movie)
+        public async Task<ActionResult<Movie>> PostMovieAsync(MovieApiModel model)
         {
+            var movie = new Movie
+            {
+                Title = model.Title,
+                ReleaseDate = model.ReleaseDate,
+                Director = model.Director,
+                IsColor = model.IsColor,
+                Format = model.Format,
+                Genre = model.Genre
+            }; 
+
             _context.Movies.Add(movie);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMovie", new { id = movie.Id }, movie);
+            return CreatedAtAction(nameof(GetMovieAsync), new { id = movie.Id }, movie);
         }
 
         // DELETE: api/Movies/5
