@@ -43,8 +43,19 @@ namespace FornavnEfternavn.WpfControls.Web.Server.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMovieAsync(int id, Movie movie)
+        public async Task<IActionResult> PutMovieAsync(int id, MovieApiModel model)
         {
+            var movie = new Movie
+            {
+                Id = model.Id,
+                Title = model.Title,
+                ReleaseDate = model.ReleaseDate,
+                Director = model.Director,
+                IsColor = model.IsColor,
+                Format = model.Format,
+                Genre = model.Genre
+            };
+
             if (id != movie.Id)
             {
                 return BadRequest();
@@ -90,7 +101,9 @@ namespace FornavnEfternavn.WpfControls.Web.Server.Controllers
             _context.Movies.Add(movie);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetMovieAsync), new { id = movie.Id }, movie);
+            return NoContent();
+
+            //return CreatedAtAction(nameof(GetMovieAsync), new { id = movie.Id }, movie);
         }
 
         // DELETE: api/Movies/5

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System;
 using FornavnEfternavn.WpfControls.Core;
+using System.Net.Http.Headers;
 
 namespace FornavnEfternavn.WpfControls.GUI
 {
@@ -18,10 +19,14 @@ namespace FornavnEfternavn.WpfControls.GUI
 
         #endregion
 
+        #region Constructor
+
         public MovieListViewModel()
         {
-            //CreateMovieCommand = new RelayCommand();
+            CreateMovieCommand = new RelayCommand(async () => await CreateMovieAsync());
         }
+        
+        #endregion
 
         #region Properties
 
@@ -41,18 +46,6 @@ namespace FornavnEfternavn.WpfControls.GUI
 
         private async Task CreateMovieAsync()
         {
-            //var values = new Dictionary<string, string>
-            //{
-            //{ "thing1", "hello" },
-            //{ "thing2", "world" }
-            //};           
-
-            //var content = new FormUrlEncodedContent(values);
-
-            //var response = client.PostAsync("http://localhost:54292/api/Movies", content);
-
-            //var responseString = await response.Result.Content.ReadAsStringAsync();
-
             var movie = new MovieApiModel
             {
                 Title = "Untitled title",
@@ -64,27 +57,46 @@ namespace FornavnEfternavn.WpfControls.GUI
 
             client.BaseAddress = new Uri("http://localhost:54292/");
 
+            //client.DefaultRequestHeaders.Accept.Clear();
+            //client.DefaultRequestHeaders.Accept.Add(
+            //    new MediaTypeWithQualityHeaderValue("application/json"));
+
             var response = await client.PostAsJsonAsync(
                 "api/Movies", movie);
 
             response.EnsureSuccessStatusCode();
 
-            var responseString =  await response.Content.ReadAsStringAsync();
+            //var responseString =  await response.Content.ReadAsStringAsync();
         }
 
-        private async Task PutMovieAsync()
+        private async Task GetMovieAsync ()
         {
-            var values = new Dictionary<string, string>
+            client.BaseAddress = new Uri("http://localhost:54292/");
+
+            string path = "";
+
+            var response = await client.GetAsync(path);            
+        }
+
+        private async Task UpdateMovieAsync()
+        {
+            client.BaseAddress = new Uri("http://localhost:54292/");
+
+            int id = 2;
+
+            var movie = new MovieApiModel
             {
-            { "thing1", "hello" },
-            { "thing2", "world" }
+                Title = "Hope this work",
+                ReleaseDate = DateTime.Now,
+                Director = "Hansi Gertrud",
+                IsColor = false,
+                Format = "54",
+                Genre = "Action"
             };
 
-            var content = new FormUrlEncodedContent(values);
+            var response = await client.PutAsJsonAsync($"api/Movies{id}", movie);
 
-            var response = client.PutAsync("http://localhost:54292/api/Movies", content);
-
-            var responseString = await response.Result.Content.ReadAsStringAsync();
+            response.EnsureSuccessStatusCode();
         }
     }
 }
