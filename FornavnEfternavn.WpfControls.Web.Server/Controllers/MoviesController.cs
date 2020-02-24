@@ -5,7 +5,7 @@ using FornavnEfternavn.WpfControls.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace FornavnEfternavn.WpfControls.Web.Server.Controllers
+namespace FornavnEfternavn.WpfControls.Web.Server
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -101,9 +101,9 @@ namespace FornavnEfternavn.WpfControls.Web.Server.Controllers
             _context.Movies.Add(movie);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            //return NoContent();
 
-            //return CreatedAtAction(nameof(GetMovieAsync), new { id = movie.Id }, movie);
+            return CreatedAtAction(nameof(GetMovieAsync), new { id = movie.Id }, movie);
         }
 
         // DELETE: api/Movies/5

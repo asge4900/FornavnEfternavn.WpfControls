@@ -5,6 +5,7 @@ using System.Windows.Input;
 using System;
 using FornavnEfternavn.WpfControls.Core;
 using System.Net.Http.Headers;
+using System.Web.Http;
 
 namespace FornavnEfternavn.WpfControls.GUI
 {
@@ -24,6 +25,8 @@ namespace FornavnEfternavn.WpfControls.GUI
         public MovieListViewModel()
         {
             CreateMovieCommand = new RelayCommand(async () => await CreateMovieAsync());
+            UpdateMovieCommand = new RelayCommand(async () => await UpdateMovieAsync());
+            DeleteMovieCommand = new RelayCommand(async () => await DeleteMovieAsync());
         }
         
         #endregion
@@ -40,7 +43,11 @@ namespace FornavnEfternavn.WpfControls.GUI
         #region Command Properties
 
         public ICommand CreateMovieCommand { get; set; }
-        
+
+        public ICommand UpdateMovieCommand { get; set; }
+
+        public ICommand DeleteMovieCommand { get; set; }
+
         #endregion
 
 
@@ -48,7 +55,7 @@ namespace FornavnEfternavn.WpfControls.GUI
         {
             var movie = new MovieApiModel
             {
-                Title = "Untitled title",
+                Title = "hjhsdkjhsksjd",
                 Director = "Director",
                 IsColor = true,
                 Format = "4.16",
@@ -62,14 +69,30 @@ namespace FornavnEfternavn.WpfControls.GUI
             //    new MediaTypeWithQualityHeaderValue("application/json"));
 
             var response = await client.PostAsJsonAsync(
-                "api/Movies", movie);
+                ApiRoutes.Movies, movie);
 
-            response.EnsureSuccessStatusCode();
+
+            //response.EnsureSuccessStatusCode();
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (Exception e)
+            {
+
+                var errorMessage = e.Message;
+            }
+
+            //if (!response.IsSuccessStatusCode)
+            //{
+            //    var error = response.ReasonPhrase;
+            //}
 
             //var responseString =  await response.Content.ReadAsStringAsync();
         }
 
-        private async Task GetMovieAsync ()
+        public async Task GetMovieAsync ()
         {
             client.BaseAddress = new Uri("http://localhost:54292/");
 
@@ -97,6 +120,15 @@ namespace FornavnEfternavn.WpfControls.GUI
             var response = await client.PutAsJsonAsync($"api/Movies{id}", movie);
 
             response.EnsureSuccessStatusCode();
+        }
+
+        private async Task DeleteMovieAsync()
+        {
+            client.BaseAddress = new Uri("http://localhost:54292/");
+
+            int id = 5;
+            
+            var response = await client.DeleteAsync($"api/Movies{id}");           
         }
     }
 }

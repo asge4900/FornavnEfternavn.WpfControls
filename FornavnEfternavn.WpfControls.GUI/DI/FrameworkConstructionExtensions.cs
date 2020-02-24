@@ -13,7 +13,7 @@ namespace FornavnEfternavn.WpfControls.GUI
         /// </summary>
         /// <param name="construction"></param>
         /// <returns></returns>
-        public static FrameworkConstruction AddFasettoWordViewModels(this FrameworkConstruction construction)
+        public static FrameworkConstruction AddFornavnEfternavnWpfControlsGUIViewModels(this FrameworkConstruction construction)
         {
             // Bind to a single instance of Application view model
             construction.Services.AddSingleton<ApplicationViewModel>();
