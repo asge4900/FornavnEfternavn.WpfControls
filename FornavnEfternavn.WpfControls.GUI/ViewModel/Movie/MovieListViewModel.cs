@@ -68,20 +68,25 @@ namespace FornavnEfternavn.WpfControls.GUI
             //client.DefaultRequestHeaders.Accept.Add(
             //    new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var response = await client.PostAsJsonAsync(
-                ApiRoutes.Movies, movie);
-
-
             //response.EnsureSuccessStatusCode();
 
             try
             {
+                var response = await client.PostAsJsonAsync(
+                    ApiRoutes.Movies, movie);
+
+                // throw HttpRequestException if fails;
                 response.EnsureSuccessStatusCode();
             }
             catch (Exception e)
             {
 
                 var errorMessage = e.Message;
+
+                if (e.InnerException != null)
+                {
+                    var innerMessage = e.InnerException.Message;
+                }
             }
 
             //if (!response.IsSuccessStatusCode)
@@ -103,12 +108,11 @@ namespace FornavnEfternavn.WpfControls.GUI
 
         private async Task UpdateMovieAsync()
         {
-            client.BaseAddress = new Uri("http://localhost:54292/");
-
-            int id = 2;
+            client.BaseAddress = new Uri("http://localhost:54292/");           
 
             var movie = new MovieApiModel
             {
+                Id = 2,
                 Title = "Hope this work",
                 ReleaseDate = DateTime.Now,
                 Director = "Hansi Gertrud",
@@ -116,8 +120,8 @@ namespace FornavnEfternavn.WpfControls.GUI
                 Format = "54",
                 Genre = "Action"
             };
-
-            var response = await client.PutAsJsonAsync($"api/Movies{id}", movie);
+            
+            var response = await client.PutAsJsonAsync($"{ApiRoutes.Movies}/{movie.Id}", movie);
 
             response.EnsureSuccessStatusCode();
         }
@@ -128,7 +132,7 @@ namespace FornavnEfternavn.WpfControls.GUI
 
             int id = 5;
             
-            var response = await client.DeleteAsync($"api/Movies{id}");           
+            var response = await client.DeleteAsync($"api/Movies/{id}");           
         }
     }
 }

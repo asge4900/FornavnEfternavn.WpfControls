@@ -117,11 +117,22 @@
             <local:MovieListControl Grid.Row="2" Grid.ColumnSpan="7" />
         </Grid>
 
-        <Button Grid.Row="3" 
-                Height="30" 
-                Width="200"
-                Content="Opret film"
-                Command="{Binding CreateMovieCommand}" />
+
+        <StackPanel Grid.Row="3">
+            <Button Height="30" 
+                    Width="200"
+                    Content="Opret film"
+                    Command="{Binding CreateMovieCommand}" />
+            <Button Height="30"
+                    Margin="20"
+                    Width="200"
+                    Content="Opdatere film"
+                    Command="{Binding UpdateMovieCommand}" />
+            <Button Height="30" 
+                    Width="200"
+                    Content="Slet film"
+                    Command="{Binding CreateMovieCommand}" />
+        </StackPanel>
 
 
         <!--<Grid Grid.Row="3" Height="20" Width="20">

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FornavnEfternavn.WpfControls.Core;
@@ -47,7 +48,7 @@ namespace FornavnEfternavn.WpfControls.Web.Server
         {
             var movie = new Movie
             {
-                Id = model.Id,
+                Id = id,
                 Title = model.Title,
                 ReleaseDate = model.ReleaseDate,
                 Director = model.Director,
@@ -88,22 +89,37 @@ namespace FornavnEfternavn.WpfControls.Web.Server
         [HttpPost]
         public async Task<ActionResult<Movie>> PostMovieAsync(MovieApiModel model)
         {
-            var movie = new Movie
+            //var movie = new Movie
+            //{
+            //    Title = model.Title,
+            //    ReleaseDate = model.ReleaseDate,
+            //    Director = model.Director,
+            //    IsColor = model.IsColor,
+            //    Format = model.Format,
+            //    Genre = model.Genre
+            //}; 
+
+            //_context.Movies.Add(movie);
+            //await _context.SaveChangesAsync();      
+
+            try
             {
-                Title = model.Title,
-                ReleaseDate = model.ReleaseDate,
-                Director = model.Director,
-                IsColor = model.IsColor,
-                Format = model.Format,
-                Genre = model.Genre
-            }; 
+                //_context.Database.ExecuteSqlCommand("CreateMovie @p0, @p1, @p2, @p3, @p4, @p5", parameters: new[] { "Bill", "Gates" });
+                
+                //_context.Database.ExecuteSqlRaw("CreateMovie @p0, @p1, @p2, @p3, @p4, @p5", model.Title, model.ReleaseDate, model.Director, model.IsColor, model.Format, model.Genre);
 
-            _context.Movies.Add(movie);
-            await _context.SaveChangesAsync();
+                _context.Database.ExecuteSqlInterpolated($"CreateMovie @Title = {model.Title}, @ReleaseDate = {model.ReleaseDate}, @Director = {model.Director}, @IsColor = {model.IsColor}, @Format = {model.Format}, @Genre = {model.Genre}");
+            }
+            catch (Exception)
+            {
 
-            //return NoContent();
+                throw;
+            }
 
-            return CreatedAtAction(nameof(GetMovieAsync), new { id = movie.Id }, movie);
+
+            return NoContent();
+
+            //return CreatedAtAction(nameof(GetMovieAsync), new { id = movie.Id }, movie);
         }
 
         // DELETE: api/Movies/5
